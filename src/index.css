@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;900&family=Rampart+One&family=Ruthie&family=Rubik+Spray+Paint&family=Tektur:wght@400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-rubik: 'Rubik Spray Paint', system-ui, sans-serif;
+  --font-tektur: 'Tektur', system-ui, sans-serif;
+  --font-ruthie: 'Ruthie', cursive;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-rampart: 'Rampart One', cursive;
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+body, html {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
