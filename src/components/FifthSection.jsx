@@ -77,6 +77,22 @@ const FifthSection = () => {
           {current.title}
         </h1>
 
+        {/* Status Counter */}
+        <div className="flex items-center gap-3 py-2 md:py-3 shrink-0">
+          <span className="text-[4vw] md:text-[1.1vw] font-black text-[#08060d] tracking-widest">
+            {String(activeSlide + 1).padStart(2, '0')}
+          </span>
+          <div className="flex-1 h-[2px] bg-black/15 relative">
+            <div 
+              className="absolute top-0 left-0 h-full bg-[#08060d] transition-all duration-500 ease-out"
+              style={{ width: `${((activeSlide + 1) / slideData.length) * 100}%` }}
+            />
+          </div>
+          <span className="text-[4vw] md:text-[1.1vw] font-light text-black/30 tracking-widest">
+            {String(slideData.length).padStart(2, '0')}
+          </span>
+        </div>
+
         {/* Description - only first 2 points on mobile, all on desktop */}
         <div className="flex-1 flex flex-col justify-center overflow-hidden py-2 md:py-0">
           <div className="space-y-2 md:space-y-3 text-gray-700 md:text-gray-800 text-[3.2vw] md:text-[1.2vw] leading-snug md:leading-relaxed md:max-w-[85%] md:font-light">

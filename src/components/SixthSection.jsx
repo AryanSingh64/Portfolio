@@ -6,6 +6,12 @@ import poster3 from '../assets/Poster/03.png'
 import poster4 from '../assets/Poster/04.png'
 import heroImage from '../assets/hero.png'
 
+const statusStyles = {
+  'Completed': 'bg-emerald-500 text-white',
+  'In Progress': 'bg-amber-400 text-black',
+  'Live': 'bg-[#1D63ED] text-white',
+}
+
 const projectsData = [
   {
     id: '01',
@@ -15,6 +21,7 @@ const projectsData = [
     date: '18 Feb 2026',
     github: '#',
     live: true,
+    status: 'Completed',
     image: poster1
   },
   {
@@ -25,6 +32,7 @@ const projectsData = [
     date: '12 Jan 2026',
     github: '#',
     live: true,
+    status: 'Live',
     image: poster2
   },
   {
@@ -35,6 +43,7 @@ const projectsData = [
     date: '04 Dec 2025',
     github: '#',
     live: true,
+    status: 'Completed',
     image: poster3
   },
   {
@@ -45,6 +54,7 @@ const projectsData = [
     date: '21 Nov 2025',
     github: '#',
     live: true,
+    status: 'Completed',
     image: poster4
   },
   {
@@ -55,6 +65,7 @@ const projectsData = [
     date: '30 Oct 2025',
     github: '#',
     live: false,
+    status: 'In Progress',
     image: heroImage
   },
   {
@@ -65,6 +76,7 @@ const projectsData = [
     date: '10 Oct 2025',
     github: '#',
     live: false,
+    status: 'Live',
     image: poster1
   }
 ]
@@ -88,12 +100,13 @@ const SixthSection = () => {
         
         {/* Table Headers (Full-Width, Minimal) */}
         <div className="hidden md:grid grid-cols-12 gap-4 pb-2 border-b-2 border-black/80 font-bold text-xs tracking-widest uppercase px-4 md:px-8 text-black/60">
-          <div className="col-span-1">Number</div>
+          <div className="col-span-1">No.</div>
           <div className="col-span-3">Title</div>
-          <div className="col-span-3">Description</div>
-          <div className="col-span-3">Tech Stack</div>
+          <div className="col-span-2">Description</div>
+          <div className="col-span-2">Tech Stack</div>
+          <div className="col-span-1">Status</div>
           <div className="col-span-1">Date</div>
-          <div className="col-span-1 text-right">Github</div>
+          <div className="col-span-2 text-right">Github</div>
         </div>
 
         {/* Minimal Table Rows */}
@@ -120,12 +133,15 @@ const SixthSection = () => {
                 {project.id}
               </div>
               
-              <div className="col-span-3 flex items-center gap-2 relative z-20">
+              <div className="col-span-3 flex items-center gap-2 relative z-20 flex-wrap md:flex-nowrap">
                 <span className="text-xl md:text-2xl font-bold tracking-tight">{project.title}</span>
-                {/* Arrow pushed directly next to title to indicate live link organically */}
+                {/* Mobile-only status badge inline with title */}
+                <span className={`md:hidden text-[9px] font-bold uppercase tracking-wider px-2 py-[2px] rounded-full ${statusStyles[project.status]}`}>
+                  {project.status}
+                </span>
                 {project.live && (
                   <svg 
-                    className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" 
+                    className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity hidden md:block" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -135,19 +151,26 @@ const SixthSection = () => {
                 )}
               </div>
               
-              <div className="col-span-3 text-[11px] md:text-xs font-medium opacity-80 leading-snug md:pr-4 relative z-20">
+              <div className="col-span-2 text-[11px] md:text-xs font-medium opacity-80 leading-snug md:pr-4 relative z-20">
                 {project.desc}
               </div>
               
-              <div className="col-span-3 text-[11px] md:text-xs font-medium opacity-80 leading-snug relative z-20">
+              <div className="col-span-2 text-[11px] md:text-xs font-medium opacity-80 leading-snug relative z-20">
                 {project.stack}
+              </div>
+
+              {/* Desktop status badge */}
+              <div className="hidden md:flex col-span-1 relative z-20 items-center">
+                <span className={`text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-full ${statusStyles[project.status]}`}>
+                  {project.status}
+                </span>
               </div>
               
               <div className="col-span-1 text-xs md:text-sm font-semibold tracking-tight relative z-20">
                 {project.date}
               </div>
               
-              <div className="col-span-1 text-right font-medium text-xs md:text-sm group-hover:translate-x-1 transition-transform relative z-20 flex justify-end items-center gap-1 opacity-80 group-hover:opacity-100">
+              <div className="col-span-2 text-right font-medium text-xs md:text-sm group-hover:translate-x-1 transition-transform relative z-20 flex justify-end items-center gap-1 opacity-80 group-hover:opacity-100">
                 Github <span className="text-lg leading-none">→</span>
               </div>
               
