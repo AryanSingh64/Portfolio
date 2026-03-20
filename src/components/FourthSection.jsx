@@ -3,7 +3,7 @@ import { motion, useTransform } from 'framer-motion'
 
 const FourthSection = ({ scrollProgress }) => {
 
-  // Timeline execution adapted to the App.jsx 600vh Track 2 timeline:
+  // Timeline execution adapted to the App.jsx Track 2 timeline mathematically stripped of artificial latency mapping constraints:
   // [0.0 to 0.4] -> Section slides onto screen. Text is hidden entirely offscreen right!
   // [0.4 to 0.6] -> Section physically dwells on screen. Text shreds aggressively sideways across the monitor!
   // [0.6 to 1.0] -> Section slides OFF screen right. Text holds tight firmly offscreen left!
