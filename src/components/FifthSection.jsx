@@ -60,20 +60,20 @@ const FifthSection = () => {
 
   return (
     <div className="w-full h-screen bg-[#FEF9EE] text-black flex flex-col md:flex-row shrink-0 md:w-screen relative overflow-hidden font-poppins">
-      
+
       {/* Left Column: Massive Poster Display */}
       <div className="w-full md:w-[42%] h-[40vh] md:h-full shrink-0 bg-black flex items-center justify-center p-4 md:p-8">
-        <img 
-          src={current.poster} 
-          alt={current.title} 
-          className="w-full h-full object-contain transition-opacity duration-500" 
+        <img
+          src={current.poster}
+          alt={current.title}
+          className="w-full h-full object-contain transition-opacity duration-500"
         />
       </div>
 
       {/* Right Column: Copy and Carousel */}
       {/* pt-8 anchors text high, pb-4 locks the extremely bottom edge of the cards to exactly 1rem from the screen bottom! */}
       <div className="w-full md:w-[58%] h-full flex flex-col pt-6 md:pt-10 pb-4 px-8 md:px-[4vw]">
-        
+
         {/* 1. Top Heading - Snapped strictly toward the top */}
         <h1 className="text-[12vw] md:text-[5vw] font-black tracking-tighter leading-[0.9] text-[#08060d] uppercase shrink-0">
           {current.title}
@@ -90,30 +90,28 @@ const FifthSection = () => {
 
         {/* Bottom Thumbnail Gallery */}
         <div className="flex flex-row justify-between items-end gap-3 md:gap-5 w-full">
-          
+
           {slideData.map((slide, index) => (
-            <div 
+            <div
               key={slide.id}
               onClick={() => setActiveSlide(index)}
               className="flex flex-col items-center gap-2 md:gap-3 w-1/4 group cursor-pointer"
             >
               {/* Pill Button */}
-              <div 
-                className={`border border-black rounded-[2rem] px-2 md:px-4 py-1 text-[8px] md:text-[10px] font-bold uppercase transition-colors tracking-widest ${
-                  activeSlide === index ? 'bg-black text-[#FEF9EE]' : 'bg-transparent text-black group-hover:bg-black group-hover:text-[#FEF9EE]'
-                }`}
+              <div
+                className={`border border-black rounded-[2rem] px-2 md:px-4 py-1 text-[8px] md:text-[10px] font-bold uppercase transition-colors tracking-widest ${activeSlide === index ? 'bg-black text-[#FEF9EE]' : 'bg-transparent text-black group-hover:bg-black group-hover:text-[#FEF9EE]'
+                  }`}
               >
                 {slide.label}
               </div>
-              
+
               {/* Thumbnail Image */}
-              <div className={`w-full rounded-xl md:rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 ${
-                activeSlide === index ? '-translate-y-2 ring-2 ring-black' : 'group-hover:-translate-y-1'
-              }`}>
-                <img 
-                  src={slide.poster} 
-                  alt={slide.label} 
-                  className="w-full h-auto object-cover aspect-[3/4]" 
+              <div className={`w-full rounded-xl md:rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 ${activeSlide === index ? '-translate-y-2 ring-2 ring-black' : 'group-hover:-translate-y-1'
+                }`}>
+                <img
+                  src={slide.poster}
+                  alt={slide.label}
+                  className="w-full h-auto object-cover aspect-[3/4]"
                 />
               </div>
             </div>
