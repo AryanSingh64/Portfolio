@@ -55,71 +55,77 @@ const slideData = [
 
 const FifthSection = () => {
   const [activeSlide, setActiveSlide] = useState(0)
-
   const current = slideData[activeSlide]
 
   return (
-    <div className="w-full h-screen bg-[#FEF9EE] text-black flex flex-col md:flex-row shrink-0 md:w-screen relative overflow-hidden font-poppins">
-
-      {/* Left Column: Massive Poster Display */}
-      <div className="w-full md:w-[42%] h-[40vh] md:h-full shrink-0 bg-black flex items-center justify-center p-4 md:p-8">
-        <img
-          src={current.poster}
-          alt={current.title}
-          className="w-full h-full object-contain transition-opacity duration-500"
+    <div className="w-screen h-screen bg-[#FEF9EE] shrink-0 relative flex flex-col md:flex-row font-poppins text-black">
+      
+      {/* 1. Mobile Top / Desktop Left: Massive Poster Display */}
+      <div className="w-full h-[55vh] md:h-full md:w-[42%] shrink-0 bg-[#08060d] flex items-center justify-center p-6 md:p-8 md:border-r-4 md:border-r-black">
+        <img 
+          src={current.poster} 
+          alt={current.title} 
+          className="w-full h-full object-contain transition-opacity duration-500" 
         />
       </div>
 
-      {/* Right Column: Copy and Carousel */}
-      {/* pt-8 anchors text high, pb-4 locks the extremely bottom edge of the cards to exactly 1rem from the screen bottom! */}
-      <div className="w-full md:w-[58%] h-full flex flex-col pt-6 md:pt-10 pb-4 px-8 md:px-[4vw]">
-
-        {/* 1. Top Heading - Snapped strictly toward the top */}
-        <h1 className="text-[12vw] md:text-[5vw] font-black tracking-tighter leading-[0.9] text-[#08060d] uppercase shrink-0">
+      {/* 2. Mobile Bottom / Desktop Right: Copy and Carousel Grid */}
+      <div className="w-full h-[45vh] md:h-full md:w-[58%] flex flex-col justify-between py-4 px-5 md:pt-10 md:pb-4 md:px-[4vw]">
+        
+        {/* Title */}
+        <h1 className="text-[7.5vw] md:text-[5vw] font-black tracking-tighter leading-none text-[#08060d] uppercase shrink-0">
           {current.title}
         </h1>
 
-        {/* 2. Middle Content - Flex-1 dynamically forces these bullet points perfectly centered within the remaining space! */}
-        <div className="flex-1 flex flex-col justify-center">
-          <ul className="space-y-3 md:space-y-4 text-base md:text-[1.2vw] font-light text-gray-800 tracking-wide leading-relaxed max-w-[90%] md:max-w-[85%] list-disc pl-5 marker:text-black">
-            {current.points.map((point, index) => (
-              <li key={index}>{point}</li>
+        {/* Description - only first 2 points on mobile, all on desktop */}
+        <div className="flex-1 flex flex-col justify-center overflow-hidden py-2 md:py-0">
+          <div className="space-y-2 md:space-y-3 text-gray-700 md:text-gray-800 text-[3.2vw] md:text-[1.2vw] leading-snug md:leading-relaxed md:max-w-[85%] md:font-light">
+            {current.points.slice(0, 2).map((point, index) => (
+              <p key={index} className="md:hidden">{point}</p>
             ))}
-          </ul>
+            {current.points.map((point, index) => (
+              <p key={index} className="hidden md:block">{point}</p>
+            ))}
+          </div>
         </div>
 
-        {/* Bottom Thumbnail Gallery */}
-        <div className="flex flex-row justify-between items-end gap-3 md:gap-5 w-full">
-
+        {/* 4-Up Thumbnail Gallery — pills hidden on mobile, clean image-only row */}
+        <div className="flex flex-row justify-between items-end gap-2 md:gap-5 w-full shrink-0">
           {slideData.map((slide, index) => (
-            <div
+            <div 
               key={slide.id}
               onClick={() => setActiveSlide(index)}
-              className="flex flex-col items-center gap-2 md:gap-3 w-1/4 group cursor-pointer"
+              className="flex flex-col items-center gap-1 md:gap-3 w-[23%] md:w-1/4 group cursor-pointer"
             >
-              {/* Pill Button */}
-              <div
-                className={`border border-black rounded-[2rem] px-2 md:px-4 py-1 text-[8px] md:text-[10px] font-bold uppercase transition-colors tracking-widest ${activeSlide === index ? 'bg-black text-[#FEF9EE]' : 'bg-transparent text-black group-hover:bg-black group-hover:text-[#FEF9EE]'
-                  }`}
+              {/* Pill — hidden on mobile to reduce clutter */}
+              <div 
+                className={`hidden md:block border rounded-full px-4 py-1 text-[10px] font-bold uppercase transition-colors tracking-widest whitespace-nowrap ${
+                  activeSlide === index 
+                    ? 'bg-black text-[#FEF9EE] border-black' 
+                    : 'bg-transparent text-black border-black group-hover:bg-black group-hover:text-[#FEF9EE]'
+                }`}
               >
                 {slide.label}
               </div>
-
+              
               {/* Thumbnail Image */}
-              <div className={`w-full rounded-xl md:rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 ${activeSlide === index ? '-translate-y-2 ring-2 ring-black' : 'group-hover:-translate-y-1'
-                }`}>
-                <img
-                  src={slide.poster}
-                  alt={slide.label}
-                  className="w-full h-auto object-cover aspect-[3/4]"
+              <div className={`w-full rounded-lg md:rounded-2xl overflow-hidden bg-black transition-all duration-300 ${
+                activeSlide === index 
+                  ? 'ring-2 ring-[#1D63ED] md:ring-black md:-translate-y-2 scale-105 md:scale-100' 
+                  : 'opacity-70 group-hover:opacity-100 md:group-hover:-translate-y-1'
+              }`}>
+                <img 
+                  src={slide.poster} 
+                  alt={slide.label} 
+                  className="w-full h-auto object-cover aspect-[3/4]" 
                 />
               </div>
             </div>
           ))}
-
         </div>
 
       </div>
+
     </div>
   )
 }
