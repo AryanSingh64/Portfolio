@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;900&family=Rampart+One&family=Ruthie&family=Rubik+Spray+Paint&family=Tektur:wght@400..900&display=swap');
 @import "tailwindcss";
 
+/* Custom variant: fires only on landscape screens ≥1024px (real desktops/laptops) */
+@custom-variant desk (@media (min-width: 1024px) and (orientation: landscape));
+
 @theme {
   --font-rubik: 'Rubik Spray Paint', system-ui, sans-serif;
   --font-tektur: 'Tektur', system-ui, sans-serif;

@@ -1,10 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import poster1 from '../assets/Poster/01.webp'
-import poster2 from '../assets/Poster/02..webp'
-import poster3 from '../assets/Poster/03.webp'
-import poster4 from '../assets/Poster/04.webp'
-import heroImage from '../assets/hero.png'
+import gitfix from '../assets/Gitfix.webp'
+import docfix from '../assets/Docfix.webp'
+import wordlens from '../assets/Wordlens.webp'
+import aethereye from '../assets/AetherEye.webp'
+import wip from '../workinprogress.webp'
 
 const statusStyles = {
   'Live': 'bg-[#1D63ED] text-white',
@@ -19,33 +19,33 @@ const projectsData = [
     title: "GitFixAI",
     desc: "Flagship. Autonomous LLM agent that detects issues in GitHub repos, patches code, and opens PRs.",
     stack: "React, FastAPI, WebSockets",
-    date: "Feb 2026",
+    date: "19 Feb 2026",
     github: "", 
     live: "https://gitfixai.vercel.app",
     status: "Live",
-    image: poster1
+    image: gitfix
   },
   {
     id: "02",
     title: "DocFix",
     desc: "Production PDF SaaS toolkit. Compression, merging, AI summarization with Gemini & Stripe.",
     stack: "Next.js, TS, Tailwind",
-    date: "Jan 2026",
+    date: "17 Jan 2026",
     github: "",
     live: "https://docfix-dev.onrender.com",
     status: "Live",
-    image: poster2
+    image: docfix
   },
   {
     id: "03",
     title: "WordLens",
     desc: "Chrome extension with floating AI definitions and translations via double-click.",
     stack: "React, Vite, Manifest V3",
-    date: "Late 2025",
+    date: "09 Mar 2026",
     github: "https://github.com/AryanSingh64/WordLens",
     live: "https://github.com/AryanSingh64/WordLens",
     status: "Store",
-    image: poster3
+    image: wordlens
   },
   {
     id: "04",
@@ -53,10 +53,10 @@ const projectsData = [
     desc: "Hybrid-edge surveillance system with dual ESP32s, YOLO face recognition.",
     stack: "Python, WebSockets, RN",
     date: "Oct 2025",
-    github: "",
+    github: "https://github.com/AetherEye/AetherEye",
     live: "",
     status: "Offline",
-    image: poster4
+    image: aethereye
   },
   {
     id: "05",
@@ -67,18 +67,18 @@ const projectsData = [
     github: "",
     live: "",
     status: "WIP",
-    image: poster1
+    image: wip
   },
   {
     id: "06",
     title: "Drops",
     desc: "Milanote-style visual canvas app with structured warm mineral aesthetic.",
     stack: "React, Framer Motion",
-    date: "2025",
+    date: "08 Feb 2026",
     github: "",
     live: "",
     status: "WIP",
-    image: poster2
+    image: wip
   }
 ];
 
@@ -126,7 +126,7 @@ const SixthSection = () => {
               <img 
                 src={project.image}
                 alt={project.title}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] md:w-[25vw] aspect-video object-cover opacity-0 group-hover:opacity-100 z-10 pointer-events-none scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl"
+                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] md:w-[25vw] aspect-video opacity-0 group-hover:opacity-100 z-10 pointer-events-none scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl rounded-lg ${project.status === 'WIP' ? 'object-contain bg-[#e5e5e5]' : 'object-cover'}`}
               />
 
               {/* ID */}

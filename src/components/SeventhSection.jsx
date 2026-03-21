@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { navLink } from '../utils/navLink';
 import img54 from '../assets/MusicAlubm/image 54.webp';
 import img55 from '../assets/MusicAlubm/image 55.webp';
 import img56 from '../assets/MusicAlubm/image 56.webp';
@@ -92,6 +93,7 @@ const SeventhSection = () => {
                   href={link.href} 
                   target={link.name === 'Projects' ? '_self' : '_blank'} 
                   rel="noopener noreferrer" 
+                  onClick={link.name === 'Projects' ? navLink('#projects', 'Projects') : undefined}
                   className="relative flex items-center transition-transform duration-300 ease-out group-hover:translate-x-[12vw] md:group-hover:translate-x-[6vw] outline-none"
                 >
                   <span className="absolute right-full mr-2 md:mr-4 text-[#1D63ED] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -164,6 +166,38 @@ const SeventhSection = () => {
 
         </div>
       </div>
+
+      {/* ── BACK TO TOP BAR ── */}
+      <div className="w-full border-t-[3px] border-[#333] flex items-center justify-between px-6 md:px-[6vw] py-5 bg-[#08060d] group cursor-pointer"
+        onClick={() => {
+          // Fire the transition curtain
+          window.dispatchEvent(new CustomEvent('trigger-nav', { detail: { target: 'top-anchor', name: 'Top' } }));
+          setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+          }, 600);
+        }}
+      >
+        <span className="font-black uppercase tracking-[0.25em] text-xs md:text-sm text-[#a3a3a3] group-hover:text-[#FEF9EE] transition-colors duration-300">
+          Back To Top
+        </span>
+
+        {/* Rotating arrow circle — spins on hover */}
+        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-[#333] group-hover:border-[#1D63ED] flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-45">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            className="text-[#a3a3a3] group-hover:text-[#1D63ED] transition-colors duration-300 -rotate-45"
+          >
+            <line x1="12" y1="19" x2="12" y2="5" />
+            <polyline points="5 12 12 5 19 12" />
+          </svg>
+        </div>
+      </div>
+
     </div>
   );
 };

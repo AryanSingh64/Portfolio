@@ -1,5 +1,6 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { navLink } from '../utils/navLink'
 import bobImg from '../assets/bob.webp'
 import einsteinImg from '../assets/einstein-png-12587 1.png'
 
@@ -108,7 +109,7 @@ const Hero = () => {
         {/* Desktop Left Column / Mobile Bottom Row */}
         <div className="order-2 md:order-1 md:col-span-3 pb-6 md:pb-8 px-4 md:pl-8 md:ml-3 flex flex-row md:flex-col justify-between md:justify-center w-full relative z-10 md:border-r-[3px] border-[#d1d5db]">
           <a href="https://drive.google.com/file/d/158EFXOn6Ln62hamZBJ-QG7DDDXx8ucSD/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="block text-[5vw] md:text-[2vw] font-black italic underline decoration-2 md:decoration-4 underline-offset-4 cursor-pointer w-fit hover:opacity-70 transition-opacity bg-white pr-2 -ml-1">Resume.</a>
-          <a href="#contact" className="block text-[5vw] md:text-[2vw] font-black italic underline decoration-2 md:decoration-4 underline-offset-4 cursor-pointer w-fit hover:opacity-70 transition-opacity bg-white pr-2 -ml-1">Contact.</a>
+          <a href="#contact" onClick={navLink('#contact', 'Contact')} className="block text-[5vw] md:text-[2vw] font-black italic underline decoration-2 md:decoration-4 underline-offset-4 cursor-pointer w-fit hover:opacity-70 transition-opacity bg-white pr-2 -ml-1">Contact.</a>
           <a href="https://www.linkedin.com/in/aryan64/" target="_blank" rel="noopener noreferrer" className="block text-[5vw] md:text-[2vw] font-black italic underline decoration-2 md:decoration-4 underline-offset-4 cursor-pointer w-fit hover:opacity-70 transition-opacity bg-white pr-2 -ml-1">LinkedIn.</a>
         </div>
 
@@ -158,7 +159,7 @@ const Hero = () => {
       </div>
 
       {/* Circular Projects button - fluid, curved text on arc */}
-      <a href="#projects" className="hidden md:flex absolute -bottom-[5vw] -right-[5vw] w-[14vw] h-[14vw] bg-[#FEF9EE] rounded-full shadow-[-8px_-8px_24px_rgba(0,0,0,0.15)] border border-black/15 z-20 overflow-hidden cursor-pointer group transition-all hover:shadow-[-12px_-12px_36px_rgba(0,0,0,0.22)] hover:scale-105">
+      <a href="#projects" onClick={navLink('#projects', 'Projects')} className="hidden md:flex absolute -bottom-[5vw] -right-[5vw] w-[14vw] h-[14vw] bg-[#FEF9EE] rounded-full shadow-[-8px_-8px_24px_rgba(0,0,0,0.15)] border border-black/15 z-20 overflow-hidden cursor-pointer group transition-all hover:shadow-[-12px_-12px_36px_rgba(0,0,0,0.22)] hover:scale-105">
         <svg viewBox="0 0 200 200" className="w-full h-full">
           <defs>
             <path

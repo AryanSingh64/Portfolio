@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Loader from './components/Loader'
 import CustomCursor from './components/CustomCursor'
+import NavTransition from './components/NavTransition'
 import Hero from './components/Hero'
 import NextFrontier from './components/NextFrontier'
 import ThirdSection from './components/ThirdSection'
@@ -49,6 +50,7 @@ const App = () => {
   return (
     <>
       <CustomCursor />
+      <NavTransition />
       {/* 
         High-End Brutalist Asset Loader
       */}

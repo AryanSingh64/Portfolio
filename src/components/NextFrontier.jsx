@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { navLink } from '../utils/navLink'
 import q1 from '../assets/_.png'
 import q2 from '../assets/2.png'
 import q3 from '../assets/3.png'
@@ -9,8 +10,8 @@ const NextFrontier = () => {
     <div className='h-screen w-screen shrink-0 bg-[#e5e5e5] relative overflow-hidden flex flex-col justify-center text-black'>
 
       <div className="hidden md:flex absolute top-10 left-10 flex-col z-10 font-rampart leading-[1.1] text-black text-5xl md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-5xl">
-        <a href="#projects" className="cursor-pointer transition-transform hover:-translate-y-1 block w-fit">Projects.</a>
-        <a href="#contact" className="cursor-pointer transition-transform hover:-translate-y-1 block w-fit">Contact.</a>
+        <a href="#projects" onClick={navLink('#projects', 'Projects')} className="cursor-pointer transition-transform hover:-translate-y-1 block w-fit">Projects.</a>
+        <a href="#contact" onClick={navLink('#contact', 'Contact')} className="cursor-pointer transition-transform hover:-translate-y-1 block w-fit">Contact.</a>
         <a href="https://www.linkedin.com/in/aryan64/" target="_blank" rel="noopener noreferrer" className="cursor-pointer transition-transform hover:-translate-y-1 block w-fit">LinkedIn.</a>
       </div>
 
