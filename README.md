@@ -1,16 +1,30 @@
-# React + Vite
+# ARYAN / PORTFOLIO v1.0
+➔ INDIE. BRUTALIST. HAND-CODED.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+■ DESCRIPTION
+Personal portfolio for Aryan Pratap Singh. No templates. No Webflow bulk. No "minimalist" cowardice. Just raw React and Framer Motion logic.
 
-Currently, two official plugins are available:
+■ CORE STACK
+➔ React / Vite
+➔ Framer Motion (The heavy lifter)
+➔ Tailwind v4 (Alpha/Beta variants)
+➔ Web3Forms (Serverless contact)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+■ MECHANICAL HIGHLIGHTS
+➔ BRUTALIST NAV TRANSITION: Black curtain teleportation logic.
+➔ FILMSTRIP SCROLL: Horizontal layout pinning on a vertical track.
+➔ PROJECT GRID: Fetches real-time GitHub data. Hover to peek.
+➔ OPTIMIZED ASSETS: Batch-converted .webp images (Total: ~140KB).
 
-## React Compiler
+■ THE "HUMAN" ELEMENT
+I have a 6.2 CGPA and a laptop that is trying its best. Most developers hide their weaknesses; I built a 100vw section around mine. If you find a bug, it is likely a design choice.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+■ LOCAL SETUP
+➔ npm install
+➔ npm run dev
 
-## Expanding the ESLint configuration
+■ DEPLOYMENT
+➔ git push origin main
+➔ Vercel takes it from there.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+➔ ➔ ➔ STOP USING TEMPLATES.
