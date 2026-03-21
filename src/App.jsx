@@ -1,5 +1,7 @@
-import React, { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import React, { useRef, useState } from 'react'
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import Loader from './components/Loader'
+import CustomCursor from './components/CustomCursor'
 import Hero from './components/Hero'
 import NextFrontier from './components/NextFrontier'
 import ThirdSection from './components/ThirdSection'
@@ -9,6 +11,7 @@ import SixthSection from './components/SixthSection'
 import SeventhSection from './components/SeventhSection'
 
 const App = () => {
+  const [loading, setLoading] = useState(true)
   const targetRef = useRef(null)
   const targetRef2 = useRef(null)
 
@@ -45,6 +48,14 @@ const App = () => {
 
   return (
     <>
+      <CustomCursor />
+      {/* 
+        High-End Brutalist Asset Loader
+      */}
+      <AnimatePresence>
+        {loading && <Loader setLoading={setLoading} />}
+      </AnimatePresence>
+
       {/* 
         Scroll Track 1: Hero -> Awwards Layout
       */}

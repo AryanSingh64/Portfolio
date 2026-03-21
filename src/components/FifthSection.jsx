@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import poster1 from '../assets/Poster/01.png'
 import poster2 from '../assets/Poster/02..png'
 import poster3 from '../assets/Poster/03.png'
@@ -55,11 +56,46 @@ const slideData = [
 
 const FifthSection = () => {
   const [activeSlide, setActiveSlide] = useState(0)
+  const [pendingSlide, setPendingSlide] = useState(null)
   const current = slideData[activeSlide]
 
+  const handleSlideChange = (index) => {
+    if (index === activeSlide || pendingSlide !== null) return;
+    
+    // Trigger transition overlay
+    setPendingSlide(index);
+    
+    // Halfway through transition, swap the actual content underneath securely
+    setTimeout(() => {
+      setActiveSlide(index);
+    }, 550); // Overlay takes ~600ms to cover screen
+    
+    // Clear overlay state so it exits natively upwards
+    setTimeout(() => {
+      setPendingSlide(null);
+    }, 1100);
+  }
+
   return (
-    <div className="w-screen h-screen bg-[#FEF9EE] shrink-0 relative flex flex-col md:flex-row font-poppins text-black">
+    <div className="w-screen h-screen bg-[#FEF9EE] shrink-0 relative flex flex-col md:flex-row font-poppins text-black overflow-hidden">
       
+      {/* 💥 BRUTALIST FULL-PAGE TRANSITION OVERLAY */}
+      <AnimatePresence>
+        {pendingSlide !== null && (
+          <motion.div 
+            initial={{ y: "100%" }}
+            animate={{ y: "0%" }}
+            exit={{ y: "-100%" }}
+            transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+            className="absolute inset-0 z-[100] bg-[#1D63ED] flex items-center justify-center"
+          >
+             <h1 className="text-[#FEF9EE] font-black text-[15vw] uppercase tracking-tighter text-center px-4 leading-[0.85]">
+                {slideData[pendingSlide].title}
+             </h1>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* 1. Mobile Top / Desktop Left: Massive Poster Display */}
       <div className="w-full h-[55vh] md:h-full md:w-[42%] shrink-0 bg-[#08060d] flex items-center justify-center p-6 md:p-8 md:border-r-4 md:border-r-black">
         <img 
@@ -110,7 +146,7 @@ const FifthSection = () => {
           {slideData.map((slide, index) => (
             <div 
               key={slide.id}
-              onClick={() => setActiveSlide(index)}
+              onClick={() => handleSlideChange(index)}
               className="flex flex-col items-center gap-1 md:gap-3 w-[23%] md:w-1/4 group cursor-pointer"
             >
               {/* Pill — hidden on mobile to reduce clutter */}
