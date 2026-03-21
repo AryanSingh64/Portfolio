@@ -17,12 +17,20 @@ const SeventhSection = () => {
     if (!message.trim()) return;
     setStatus('sending');
     try {
-      const res = await fetch('/api/message', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: message })
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ 
+          // Replace this string with the actual API key you get from Web3Forms:
+          access_key: "3b8e5e8a-6692-496e-adc2-68ffbc73fe48", 
+          subject: "New Message from Portfolio Website",
+          message: message 
+        })
       });
-      if (res.ok) {
+      
+      const json = await res.json();
+      
+      if (res.status === 200 && json.success) {
         setStatus('sent');
         setMessage('');
         setTimeout(() => setStatus('idle'), 3000);
@@ -68,10 +76,10 @@ const SeventhSection = () => {
       </div>
 
       {/* 2. MAIN FOOTER GRID */}
-      <div className="w-full flex-1 flex flex-col md:flex-row bg-[#08060d]">
+      <div className="w-full flex-1 flex flex-col xl:flex-row bg-[#08060d]">
         
         {/* LEFT COLUMN: Links */}
-        <div className="w-full md:w-1/2 flex flex-col justify-center py-16 md:py-24 px-6 md:px-[6vw] border-b-[3px] md:border-b-0 md:border-r-[3px] border-[#333]">
+        <div className="w-full xl:w-1/2 flex flex-col justify-center py-16 md:py-24 px-6 md:px-[6vw] border-b-[3px] xl:border-b-0 xl:border-r-[3px] border-[#333]">
           <ul className="flex flex-col gap-4 md:gap-6 font-black uppercase text-[15vw] md:text-[7vw] leading-[0.85] tracking-tighter">
             {[
               { name: 'Projects', href: '#projects' },
@@ -99,7 +107,7 @@ const SeventhSection = () => {
         </div>
 
         {/* RIGHT COLUMN */}
-        <div className="w-full md:w-1/2 flex flex-col">
+        <div className="w-full xl:w-1/2 flex flex-col">
           
           {/* Right Top Area */}
           <div className="flex-1 flex flex-col justify-center py-12 md:py-16 px-6 md:px-[6vw] border-b-[3px] border-[#333]">

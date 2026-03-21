@@ -75,9 +75,9 @@ const FifthSection = () => {
       setPendingSlide(null);
     }, 1100);
   }
-
+  
   return (
-    <div className="w-screen h-screen bg-[#FEF9EE] shrink-0 relative flex flex-col md:flex-row font-poppins text-black overflow-hidden">
+    <div className="w-screen h-screen bg-[#FEF9EE] shrink-0 relative flex flex-col xl:flex-row font-poppins text-black overflow-hidden">
       
       {/* 💥 BRUTALIST FULL-PAGE TRANSITION OVERLAY */}
       <AnimatePresence>
@@ -97,7 +97,7 @@ const FifthSection = () => {
       </AnimatePresence>
 
       {/* 1. Mobile Top / Desktop Left: Massive Poster Display */}
-      <div className="w-full h-[55vh] md:h-full md:w-[42%] shrink-0 bg-[#08060d] flex items-center justify-center p-6 md:p-8 md:border-r-4 md:border-r-black">
+      <div className="w-full h-[55vh] md:h-[50vh] xl:h-full xl:w-[42%] shrink-0 bg-[#08060d] flex items-center justify-center p-6 lg:p-10 xl:p-8 xl:border-r-[3px] xl:border-r-[#333]">
         <img 
           src={current.poster} 
           alt={current.title} 
@@ -106,16 +106,16 @@ const FifthSection = () => {
       </div>
 
       {/* 2. Mobile Bottom / Desktop Right: Copy and Carousel Grid */}
-      <div className="w-full h-[45vh] md:h-full md:w-[58%] flex flex-col justify-between py-4 px-5 md:pt-10 md:pb-4 md:px-[4vw]">
+      <div className="w-full h-[45vh] md:h-[50vh] xl:h-full xl:w-[58%] flex flex-col justify-between py-4 px-5 md:py-8 lg:px-[8vw] xl:pt-10 xl:pb-8 xl:px-[4vw]">
         
         {/* Title */}
-        <h1 className="text-[7.5vw] md:text-[5vw] font-black tracking-tighter leading-none text-[#08060d] uppercase shrink-0">
+        <h1 className="text-[7.5vw] md:text-[6vw] lg:text-[5vw] xl:text-[4vw] font-black tracking-tighter leading-none text-[#08060d] uppercase shrink-0">
           {current.title}
         </h1>
 
         {/* Status Counter */}
         <div className="flex items-center gap-3 py-2 md:py-3 shrink-0">
-          <span className="text-[4vw] md:text-[1.1vw] font-black text-[#08060d] tracking-widest">
+          <span className="text-[4vw] md:text-[2vw] lg:text-[1.5vw] xl:text-[1.1vw] font-black text-[#08060d] tracking-widest">
             {String(activeSlide + 1).padStart(2, '0')}
           </span>
           <div className="flex-1 h-[2px] bg-black/15 relative">
@@ -124,34 +124,34 @@ const FifthSection = () => {
               style={{ width: `${((activeSlide + 1) / slideData.length) * 100}%` }}
             />
           </div>
-          <span className="text-[4vw] md:text-[1.1vw] font-light text-black/30 tracking-widest">
+          <span className="text-[4vw] md:text-[2vw] lg:text-[1.5vw] xl:text-[1.1vw] font-light text-black/30 tracking-widest">
             {String(slideData.length).padStart(2, '0')}
           </span>
         </div>
 
-        {/* Description - only first 2 points on mobile, all on desktop */}
+        {/* Description - only first 2 points on mobile/tablet, all on desktop */}
         <div className="flex-1 flex flex-col justify-center overflow-hidden py-2 md:py-0">
-          <div className="space-y-2 md:space-y-3 text-gray-700 md:text-gray-800 text-[3.2vw] md:text-[1.2vw] leading-snug md:leading-relaxed md:max-w-[85%] md:font-light">
+          <div className="space-y-2 md:space-y-4 lg:space-y-5 xl:space-y-3 text-gray-700 md:text-gray-800 text-[3.2vw] md:text-[2.2vw] lg:text-[2vw] xl:text-[1.2vw] leading-snug lg:leading-relaxed xl:max-w-[85%] xl:font-light">
             {current.points.slice(0, 2).map((point, index) => (
-              <p key={index} className="md:hidden">{point}</p>
+              <p key={index} className="xl:hidden">{point}</p>
             ))}
             {current.points.map((point, index) => (
-              <p key={index} className="hidden md:block">{point}</p>
+              <p key={index} className="hidden xl:block">{point}</p>
             ))}
           </div>
         </div>
 
-        {/* 4-Up Thumbnail Gallery — pills hidden on mobile, clean image-only row */}
-        <div className="flex flex-row justify-between items-end gap-2 md:gap-5 w-full shrink-0">
+        {/* 4-Up Thumbnail Gallery — pills hidden on tablet to prevent squeezing overlaps */}
+        <div className="flex flex-row justify-between items-end gap-2 md:gap-4 xl:gap-5 w-full shrink-0 mt-4 md:mt-6 xl:mt-0">
           {slideData.map((slide, index) => (
             <div 
               key={slide.id}
               onClick={() => handleSlideChange(index)}
-              className="flex flex-col items-center gap-1 md:gap-3 w-[23%] md:w-1/4 group cursor-pointer"
+              className="flex flex-col items-center gap-1 xl:gap-3 w-[23%] md:w-1/4 group cursor-pointer"
             >
-              {/* Pill — hidden on mobile to reduce clutter */}
+              {/* Pill — strictly hide below xl to prevent squeezing overlaps */}
               <div 
-                className={`hidden md:block border rounded-full px-4 py-1 text-[10px] font-bold uppercase transition-colors tracking-widest whitespace-nowrap ${
+                className={`hidden xl:block xl:text-[10px] 2xl:text-[12px] border rounded-full px-4 py-1 font-bold uppercase transition-colors tracking-widest whitespace-nowrap ${
                   activeSlide === index 
                     ? 'bg-black text-[#FEF9EE] border-black' 
                     : 'bg-transparent text-black border-black group-hover:bg-black group-hover:text-[#FEF9EE]'
@@ -161,10 +161,10 @@ const FifthSection = () => {
               </div>
               
               {/* Thumbnail Image */}
-              <div className={`w-full rounded-lg md:rounded-2xl overflow-hidden bg-black transition-all duration-300 ${
+              <div className={`w-full rounded-lg md:rounded-xl xl:rounded-2xl overflow-hidden bg-black transition-all duration-300 ${
                 activeSlide === index 
-                  ? 'ring-2 ring-[#1D63ED] md:ring-black md:-translate-y-2 scale-105 md:scale-100' 
-                  : 'opacity-70 group-hover:opacity-100 md:group-hover:-translate-y-1'
+                  ? 'ring-2 ring-[#1D63ED] xl:ring-black xl:-translate-y-2 scale-105 xl:scale-100' 
+                  : 'opacity-70 group-hover:opacity-100 xl:group-hover:-translate-y-1'
               }`}>
                 <img 
                   src={slide.poster} 

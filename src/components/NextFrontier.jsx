@@ -17,16 +17,16 @@ const NextFrontier = () => {
       {/* Massive Text Layout - Absolute Pinned */}
       <div className='w-full h-full relative pointer-events-none font-poppins'>
         
-        {/* MD LAYOUT (768–1023px) — clean compact grid layout */}
-        <div className="hidden md:flex lg:hidden w-full h-full flex-col justify-center px-10 gap-0">
+        {/* TABLET LAYOUT (768–1279px) — clean compact grid layout */}
+        <div className="hidden md:flex xl:hidden w-full h-full flex-col justify-center px-10 md:px-16 gap-0">
           <h1 className="font-bold text-[18vw] leading-[0.85] tracking-tighter text-[#08060d] text-right self-end">Need</h1>
           <h1 className="font-bold text-[18vw] leading-[0.85] tracking-tighter text-[#08060d] text-left self-start">Some-</h1>
           <h1 className="font-bold text-[18vw] leading-[0.85] tracking-tighter text-[#08060d] text-right self-end">thing</h1>
           <h1 className="font-bold text-[16vw] leading-[0.85] tracking-tighter text-[#08060d] text-left self-start">Different</h1>
         </div>
 
-        {/* LG+ LAYOUT (1024px+) — original oversized absolute typographic layout */}
-        <div className="hidden lg:block w-full h-full relative">
+        {/* XL+ DESKTOP LAYOUT (1280px+) — original oversized absolute typographic layout */}
+        <div className="hidden xl:block w-full h-full relative">
           {/* "Need" — top-right corner */}
           <h1 className="absolute font-bold leading-none tracking-normal m-0 p-0 text-[#08060d] top-[-5vw] right-[-2vw] text-[22vw] xl:text-[22vw] 2xl:text-[22vw]">
             Need
