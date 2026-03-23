@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React from 'react'
+import { motion } from 'framer-motion'
 import { navLink } from '../utils/navLink'
 import bobImg from '../assets/bob.webp'
 import einsteinImg from '../assets/einstein-png-12587 1.png'

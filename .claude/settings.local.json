@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(curl -s \"https://api.github.com/users/AryanSingh64/repos?sort=updated&per_page=100\")",
+      "Bash(curl -s \"https://api.github.com/users/AryanSingh64/repos?sort=updated&per_page=100&page=1\")",
+      "Read(//tmp/**)",
+      "Bash(curl -s \"https://api.github.com/users/AryanSingh64/repos?per_page=100\")",
+      "Bash(curl -s \"https://api.github.com/repos/AryanSingh64/GItFIxAI\")"
+    ]
+  }
+}

@@ -20,7 +20,7 @@ const projectsData = [
     desc: "Flagship. Autonomous LLM agent that detects issues in GitHub repos, patches code, and opens PRs.",
     stack: "React, FastAPI, WebSockets",
     date: "19 Feb 2026",
-    github: "", 
+    github: "https://github.com/AryanSingh64/GItFIxAI",
     live: "https://gitfixai.vercel.app",
     status: "Live",
     image: gitfix
@@ -31,7 +31,7 @@ const projectsData = [
     desc: "Production PDF SaaS toolkit. Compression, merging, AI summarization with Gemini & Stripe.",
     stack: "Next.js, TS, Tailwind",
     date: "17 Jan 2026",
-    github: "",
+    github: "https://github.com/AryanSingh64/DocFix",
     live: "https://docfix-dev.onrender.com",
     status: "Live",
     image: docfix
@@ -75,7 +75,7 @@ const projectsData = [
     desc: "Milanote-style visual canvas app with structured warm mineral aesthetic.",
     stack: "React, Framer Motion",
     date: "08 Feb 2026",
-    github: "",
+    github: "https://github.com/AryanSingh64/Drops",
     live: "",
     status: "WIP",
     image: wip
@@ -90,14 +90,14 @@ const SixthSection = () => {
       <motion.h1 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, margin: "-100px" }}
+        viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="text-[20vw] font-black uppercase tracking-tighter leading-[0.75] ml-[-1vw] mb-12 md:mb-16 pointer-events-none"
       >
         PROJECTS
       </motion.h1>
 
-      <div className="w-full flex flex-col w-full">
+      <div className="w-full flex flex-col">
         
         {/* Table Headers (Full-Width, Minimal) */}
         <div className="hidden md:grid grid-cols-12 gap-4 pb-2 border-b-2 border-black/80 font-bold text-xs tracking-widest uppercase px-4 md:px-8 text-black/60">
@@ -123,10 +123,11 @@ const SixthSection = () => {
             >
               
               {/* Massive Hover Pop-Out Image (Centered) */}
-              <img 
+              <img
                 src={project.image}
                 alt={project.title}
-                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] md:w-[25vw] aspect-video opacity-0 group-hover:opacity-100 z-10 pointer-events-none scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl rounded-lg ${project.status === 'WIP' ? 'object-contain bg-[#e5e5e5]' : 'object-cover'}`}
+                loading="lazy"
+                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block md:w-[25vw] aspect-video opacity-0 group-hover:opacity-100 z-10 pointer-events-none scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl rounded-lg ${project.status === 'WIP' ? 'object-contain bg-[#e5e5e5]' : 'object-cover'}`}
               />
 
               {/* ID */}
@@ -180,14 +181,12 @@ const SixthSection = () => {
               
               {/* GITHUB LINK */}
               <div className="col-span-6 md:col-span-2 text-right font-medium text-xs md:text-sm group-hover:translate-x-1 transition-transform relative z-30 flex justify-end items-center opacity-80 group-hover:opacity-100 mt-2 md:mt-0">
-                {project.github && typeof project.github === 'string' && project.github.length > 0 ? (
+                {project.github && project.github.length > 0 ? (
                   <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-[#1D63ED] transition-colors" onClick={(e) => e.stopPropagation()}>
                     Github <span className="text-lg leading-none">→</span>
                   </a>
                 ) : (
-                  <span className="flex items-center gap-1">
-                    Github <span className="text-lg leading-none">→</span>
-                  </span>
+                  <span className="text-black/20 group-hover:text-white/20 flex items-center gap-1">—</span>
                 )}
               </div>
               

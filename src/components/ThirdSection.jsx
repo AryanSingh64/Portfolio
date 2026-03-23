@@ -57,6 +57,7 @@ const ThirdSection = () => {
         <motion.img
           src={vectorImg}
           alt="Scribble Background"
+          loading="lazy"
           style={{ rotate, scale }}
           className="w-full h-full object-contain opacity-90"
         />

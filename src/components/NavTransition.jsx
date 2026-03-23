@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const NavTransition = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [targetName, setTargetName] = useState("");
 
   useEffect(() => {
     const handleNav = (e) => {
@@ -11,18 +10,16 @@ const NavTransition = () => {
       if (isTransitioning) return;
       
       setIsTransitioning(true);
-      setTargetName(e.detail.name);
       
       // Wait for the curtain to fully drop down (600ms)
-      // Then teleport the browser instantly to the target coordinates!
+      // Then smoothly scroll to target
       setTimeout(() => {
         if (e.detail.target === 'top-anchor') {
-          window.scrollTo({ top: 0, behavior: 'instant' });
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
           const targetElement = document.getElementById(e.detail.target.replace('#', ''));
           if (targetElement) {
-             // Using instant behavior so we don't awkwardly smoothly scroll behind the curtain
-             targetElement.scrollIntoView({ behavior: 'instant' });
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }
       }, 600);

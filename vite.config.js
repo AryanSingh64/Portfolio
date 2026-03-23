@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-// Custom Vite plugin to intercept API requests and write to local JSON
+// Custom Vite plugin to intercept API requests and write to a dev-only location
 function localMessageAPI() {
   return {
     name: 'local-message-api',
@@ -20,14 +20,21 @@ function localMessageAPI() {
           req.on('end', () => {
             try {
               const data = JSON.parse(body)
-              const filePath = path.resolve(__dirname, 'messages.json')
-              
+              // Store in .tmp directory to avoid git conflicts
+              const tmpDir = path.resolve(__dirname, '.tmp')
+              const filePath = path.join(tmpDir, 'messages.json')
+
+              // Create .tmp directory if it doesn't exist
+              if (!fs.existsSync(tmpDir)) {
+                fs.mkdirSync(tmpDir, { recursive: true })
+              }
+
               let messages = []
               if (fs.existsSync(filePath)) {
                 try {
                   const fileContent = fs.readFileSync(filePath, 'utf-8')
                   messages = fileContent.trim() ? JSON.parse(fileContent) : []
-                } catch (e) {
+                } catch {
                   messages = []
                 }
               }
@@ -38,7 +45,7 @@ function localMessageAPI() {
               })
 
               fs.writeFileSync(filePath, JSON.stringify(messages, null, 2))
-              
+
               res.statusCode = 200
               res.setHeader('Content-Type', 'application/json')
               res.end(JSON.stringify({ success: true }))
