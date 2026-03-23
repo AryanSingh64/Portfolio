@@ -53,94 +53,96 @@ const App = () => {
   return (
     <ErrorBoundary>
       <>
-        <CustomCursor />
-        <NavTransition />
-        {/*
-          High-End Brutalist Asset Loader
-        */}
-        <AnimatePresence>
-          {loading && <Loader setLoading={setLoading} />}
-        </AnimatePresence>
+        {/* Skip link target */}
+        <main id="main-content" className="w-full">
+          <CustomCursor />
+          <NavTransition />
+          {/*
+            High-End Brutalist Asset Loader
+          */}
+          <AnimatePresence>
+            {loading && <Loader setLoading={setLoading} />}
+          </AnimatePresence>
 
-        {/*
-          Scroll Track 1: Hero -> Awwards Layout
-        */}
-        <div ref={targetRef} className="relative h-[200vh] bg-black">
-          <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-            <motion.div
-              style={{ x }}
-              className="flex flex-row h-full w-[200vw]"
-            >
-              <div className="h-screen w-screen shrink-0">
-                <Hero />
-              </div>
-              <NextFrontier />
-            </motion.div>
+          {/*
+            Scroll Track 1: Hero -> Awwards Layout
+          */}
+          <div ref={targetRef} className="relative h-[200vh] bg-black">
+            <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+              <motion.div
+                style={{ x }}
+                className="flex flex-row h-full w-[200vw]"
+              >
+                <div className="h-screen w-screen shrink-0">
+                  <Hero />
+                </div>
+                <NextFrontier />
+              </motion.div>
+            </div>
           </div>
-        </div>
 
-        {/*
-          Scroll Track 2: Left-Side Reveal Multi-Stage Filmstrip
-        */}
-        <div ref={targetRef2} className="relative h-[400vh] bg-black">
-          <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+          {/*
+            Scroll Track 2: Left-Side Reveal Multi-Stage Filmstrip
+          */}
+          <div ref={targetRef2} className="relative h-[400vh] bg-black">
+            <div className="sticky top-0 flex h-screen items-center overflow-hidden">
 
-            {/* =========================================
-                DESKTOP LAYOUT (3 Screens - 300vw)
-            ========================================= */}
-            <motion.div
-              style={{ x: x2 }}
-              className="hidden md:flex flex-row h-full w-[300vw]"
-            >
-              {/* Screen 5: Placed at the very front so it slides in LAST from the far left */}
-              <div className="h-screen w-screen shrink-0 relative overflow-hidden">
-                <FifthSection />
-              </div>
+              {/* =========================================
+                  DESKTOP LAYOUT (3 Screens - 300vw)
+              ========================================= */}
+              <motion.div
+                style={{ x: x2 }}
+                className="hidden md:flex flex-row h-full w-[300vw]"
+              >
+                {/* Screen 5: Placed at the very front so it slides in LAST from the far left */}
+                <div className="h-screen w-screen shrink-0 relative overflow-hidden">
+                  <FifthSection />
+                </div>
 
-              {/* Screen 4: Appears in the middle timeline to do its parallax text effect */}
-              <div className="h-screen w-screen shrink-0 relative overflow-hidden">
-                <FourthSection scrollProgress={scrollYProgress2} />
-              </div>
+                {/* Screen 4: Appears in the middle timeline to do its parallax text effect */}
+                <div className="h-screen w-screen shrink-0 relative overflow-hidden">
+                  <FourthSection scrollProgress={scrollYProgress2} />
+                </div>
 
-              {/* Screen 3: The Red Page - Renders on arrival because of the -66.6% starting position pulling the strip entirely right! */}
-              <div className="h-screen w-screen shrink-0 relative overflow-hidden">
-                <ThirdSection />
-              </div>
-            </motion.div>
+                {/* Screen 3: The Red Page - Renders on arrival because of the -66.6% starting position pulling the strip entirely right! */}
+                <div className="h-screen w-screen shrink-0 relative overflow-hidden">
+                  <ThirdSection />
+                </div>
+              </motion.div>
 
-            {/* =========================================
-                MOBILE LAYOUT (3 Screens - 300vw)
-            ========================================= */}
-            <motion.div
-              style={{ x: x2Mobile }}
-              className="md:hidden flex flex-row h-full w-[300vw]"
-            >
-              {/* Screen 5 */}
-              <div className="h-screen w-screen shrink-0 relative overflow-hidden">
-                <FifthSection />
-              </div>
+              {/* =========================================
+                  MOBILE LAYOUT (3 Screens - 300vw)
+              ========================================= */}
+              <motion.div
+                style={{ x: x2Mobile }}
+                className="md:hidden flex flex-row h-full w-[300vw]"
+              >
+                {/* Screen 5 */}
+                <div className="h-screen w-screen shrink-0 relative overflow-hidden">
+                  <FifthSection />
+                </div>
 
-              {/* Screen 4 */}
-              <div className="h-screen w-screen shrink-0 relative overflow-hidden">
-                <FourthSection scrollProgress={scrollYProgress2} />
-              </div>
+                {/* Screen 4 */}
+                <div className="h-screen w-screen shrink-0 relative overflow-hidden">
+                  <FourthSection scrollProgress={scrollYProgress2} />
+                </div>
 
-              {/* Screen 3 */}
-              <div className="h-screen w-screen shrink-0 relative overflow-hidden">
-                <ThirdSection />
-              </div>
-            </motion.div>
+                {/* Screen 3 */}
+                <div className="h-screen w-screen shrink-0 relative overflow-hidden">
+                  <ThirdSection />
+                </div>
+              </motion.div>
 
+            </div>
           </div>
-        </div>
 
 
-        {/*
-          Scroll Track 3: Standard Vertical Native Flow
-        */}
-        <SixthSection />
-        <SeventhSection />
-
+          {/*
+            Scroll Track 3: Standard Vertical Native Flow
+          */}
+          <SixthSection />
+          <SeventhSection />
+        </main>
       </>
     </ErrorBoundary>
   )

@@ -42,6 +42,8 @@ const CarouselThumbnail = ({
         <img
           src={slide.poster}
           alt={`${slide.title} thumbnail`}
+          width={480}
+          height={270}
           className="w-full object-cover aspect-video desk:aspect-3/4 max-h-[16vh] desk:max-h-none"
           loading="lazy"
         />

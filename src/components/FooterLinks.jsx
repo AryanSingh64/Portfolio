@@ -23,7 +23,7 @@ const FooterLinks = () => {
                   ? navLink('#projects', 'Projects')
                   : undefined
               }
-              className="relative flex items-center transition-transform duration-300 ease-out group-hover:translate-x-[12vw] md:group-hover:translate-x-[6vw] outline-none"
+              className="relative flex items-center min-h-[44px] transition-transform duration-300 ease-out group-hover:translate-x-[12vw] md:group-hover:translate-x-[6vw] outline-none"
               aria-label={`Visit ${link.name}`}
             >
               <span className="absolute right-full mr-2 md:mr-4 text-[#1D63ED] opacity-0 group-hover:opacity-100 transition-opacity duration-300">

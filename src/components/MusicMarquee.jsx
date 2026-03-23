@@ -27,8 +27,10 @@ const MusicMarquee = () => {
                 <img
                   key={idx}
                   src={img}
-                  alt="album"
+                  alt="Album artwork"
                   loading="lazy"
+                  width={300}
+                  height={300}
                   className="h-[25vw] md:h-[12vw] w-[25vw] md:w-[12vw] object-cover shrink-0 select-none grayscale hover:grayscale-0 transition-all duration-300"
                 />
               ))}

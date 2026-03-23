@@ -125,8 +125,10 @@ const SixthSection = () => {
               {/* Massive Hover Pop-Out Image (Centered) */}
               <img
                 src={project.image}
-                alt={project.title}
+                alt={`${project.title} project preview`}
                 loading="lazy"
+                width={800}
+                height={450}
                 className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block md:w-[25vw] aspect-video opacity-0 group-hover:opacity-100 z-10 pointer-events-none scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl rounded-lg ${project.status === 'WIP' ? 'object-contain bg-[#e5e5e5]' : 'object-cover'}`}
               />
 

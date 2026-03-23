@@ -7,6 +7,8 @@ const PosterDisplay = ({ poster }) => {
         src={poster}
         alt="Project poster"
         loading="lazy"
+        width={800}
+        height={600}
         className="w-full h-full object-contain transition-opacity duration-500"
       />
     </div>

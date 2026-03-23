@@ -36,15 +36,15 @@ const ContactForm = ({ status, message, setMessage, handleSendMessage }) => {
         <div
           className={`mb-4 p-3 border-l-4 text-sm font-bold ${
             status === 'error'
-              ? 'border-red-500 text-red-400 bg-red-900/20'
-              : 'border-green-500 text-green-400 bg-green-900/20'
+              ? 'border-red-600 text-red-300 bg-red-900/30'
+              : 'border-green-600 text-green-300 bg-green-900/30'
           }`}
           role="alert"
           aria-live="polite"
         >
           {getStatusMessage()}
           {status === 'error' && (
-            <span className="block text-xs mt-1 opacity-70">
+            <span className="block text-xs mt-1 opacity-80">
               Please check your connection and try again.
             </span>
           )}
@@ -62,7 +62,7 @@ const ContactForm = ({ status, message, setMessage, handleSendMessage }) => {
           disabled={status === 'sending' || status === 'sent'}
           aria-label="Type your message"
           aria-describedby="message-help"
-          className="w-full bg-transparent outline-none font-black uppercase text-[6vw] md:text-[3vw] tracking-tighter text-[#FEF9EE] placeholder:text-[#444] disabled:opacity-50"
+          className="w-full bg-transparent outline-none font-black uppercase text-[clamp(1rem,4vw,2rem)] md:text-[clamp(1rem,2vw,1.5rem)] tracking-tighter text-[#FEF9EE] placeholder:text-[#444] disabled:opacity-50 py-3 min-h-[44px]"
         />
         <button
           onClick={handleSendMessage}
@@ -74,7 +74,7 @@ const ContactForm = ({ status, message, setMessage, handleSendMessage }) => {
               ? 'Message sent'
               : 'Send message'
           }
-          className="text-[#333] group-focus-within:text-[#1D63ED] opacity-100 hover:text-[#FEF9EE] transition-colors ml-4 text-[8vw] md:text-[4vw] outline-none disabled:opacity-20 leading-none shrink-0"
+          className="min-w-[44px] min-h-[44px] flex items-center justify-center text-[#333] group-focus-within:text-[#1D63ED] opacity-100 hover:text-[#FEF9EE] transition-colors ml-4 text-[8vw] md:text-[4vw] outline-none disabled:opacity-20 leading-none shrink-0"
         >
           {getButtonSymbol()}
         </button>

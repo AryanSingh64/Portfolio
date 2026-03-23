@@ -52,14 +52,16 @@ const ThirdSection = () => {
   return (
     <div ref={containerRef} className="w-full h-screen bg-[#E83F38] text-white flex items-center justify-center relative overflow-hidden shrink-0 md:w-screen">
 
-      {/* Background Vector Image (Safely isolated via Tailwind bounds) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] md:w-[70vw] h-auto pointer-events-none z-0">
+      {/* Background Vector Image (decorative) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] md:w-[70vw] h-auto pointer-events-none z-0" aria-hidden="true">
         <motion.img
           src={vectorImg}
-          alt="Scribble Background"
+          alt=""
           loading="lazy"
           style={{ rotate, scale }}
           className="w-full h-full object-contain opacity-90"
+          width={1200}
+          height={800}
         />
       </div>
 

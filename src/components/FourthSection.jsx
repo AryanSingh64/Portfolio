@@ -11,7 +11,7 @@ const FourthSection = ({ scrollProgress }) => {
 
   return (
     <div className="w-full h-screen bg-[#08060d] text-white flex items-center justify-center shrink-0 md:w-screen relative overflow-hidden">
-      <motion.h1 
+      <motion.h2
         style={{ x }}
         className="flex gap-[8vw] md:gap-[5vw] text-[25vw] md:text-[20vw] font-poppins font-black whitespace-nowrap leading-none tracking-tighter"
       >
@@ -19,7 +19,7 @@ const FourthSection = ({ scrollProgress }) => {
         <span>work</span>
         <span>with</span>
         <span>me?</span>
-      </motion.h1>
+      </motion.h2>
     </div>
   )
 }
