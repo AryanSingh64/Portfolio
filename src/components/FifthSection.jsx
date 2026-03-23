@@ -73,9 +73,10 @@ const FifthSection = () => {
       setActiveSlide(index);
     }, 350);
 
+    // Clear pendingSlide after the overlay animation completes (1.2s)
     setTimeout(() => {
       setPendingSlide(null);
-    }, 700);
+    }, 1200);
   };
 
   return (

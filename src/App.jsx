@@ -34,7 +34,7 @@ const App = () => {
   )
 
   // Framer Motion scroll hooks for Track 2
-  const { scrollYProgress: scrollYProgress2 } = useScroll({ target: targetRef2 })
+  const { scrollYProgress: scrollYProgress2 } = useScroll({ target: targetRef2, smooth: 1 })
 
   // Track 2: Left-side reveal multi-stage filmstrip
   const x2 = useTransform(
@@ -92,6 +92,10 @@ const App = () => {
               ========================================= */}
               <motion.div
                 style={{ x: x2 }}
+                transition={{
+                  duration: 1,
+                  ease: [0.76, 0, 0.24, 1]
+                }}
                 className="hidden md:flex flex-row h-full w-[300vw]"
               >
                 {/* Screen 5: Placed at the very front so it slides in LAST from the far left */}
